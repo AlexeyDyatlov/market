@@ -1,14 +1,26 @@
+if Gem.win_platform?
+  Encoding.default_external = Encoding.find(Encoding.locale_charmap)
+  Encoding.default_internal = __ENCODING__
+
+  [STDIN, STDOUT].each do |io|
+    io.set_encoding(Encoding.default_external, Encoding.default_internal)
+  end
+end
+
 require_relative 'lib/product.rb'
 require_relative 'lib/book.rb'
 require_relative 'lib/movie.rb'
 
-cart = []
-cart << Movie.new(price: 290, balance: 4, title: "Дурак", year: 2014, director: "Юрий Быков")
-cart << Movie.new(price: 458, balance: 1, title: "Leon", year: 1994, director: "Luc Besson")
-cart << Book.new(price: 350, balance: 2, title: "Любовь живет три года", author: "Frederic Begbeder", year: 1997)
+current_path = __dir__
 
-cart[1].price = 990
+films = []
+film_files = Dir.glob("#{__dir__}/data/films/*.txt").to_a
+film_files.each do |file_name|
+  lines = File.readlines(file_name)
+  films << lines
+end
+puts films
 
 puts "Можем предложить: "
 puts
-cart.each { |item| puts item.output}
+#cart.each { |item| puts item.output}
