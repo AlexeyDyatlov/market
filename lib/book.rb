@@ -1,4 +1,5 @@
 class Book < Product
+  attr_accessor :genre, :author
   def initialize(options)
     super
     @genre = options[:genre]

@@ -1,5 +1,5 @@
 class Product
-  attr_accessor :price, :balance
+  attr_accessor :title, :price, :balance
   def initialize(options)
     @title = options[:title]
     @price = options[:price]

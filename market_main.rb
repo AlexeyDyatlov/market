@@ -10,17 +10,13 @@ end
 require_relative 'lib/product.rb'
 require_relative 'lib/book.rb'
 require_relative 'lib/movie.rb'
+require_relative 'lib/product_collection.rb'
 
 current_path = __dir__
 
-films = []
-film_files = Dir.glob("#{__dir__}/data/films/*.txt").to_a
-film_files.each do |file_name|
-  lines = File.readlines(file_name)
-  films << lines
-end
-puts films
+collection = ProductCollection.from_dir(current_path + '/data')
+collection.sort!(by: :title, order: :asc)
 
-puts "Можем предложить: "
-puts
-#cart.each { |item| puts item.output}
+collection.to_a.each do |item|
+  puts item
+end
