@@ -1,16 +1,6 @@
 class Movie < Product
   attr_accessor :year, :director
 
-  def initialize(options)
-    super
-    @director = options[:director]
-    @year = options[:year]
-  end
-
-  def output
-    puts "Фильм #{@title}, #{@year}, реж. #{@director}, #{super}"
-  end
-
   def self.from_file(file_path)
     lines = File.readlines(file_path, encoding: 'UTF-8').map { |l| l.chomp }
     self.new(
@@ -20,6 +10,16 @@ class Movie < Product
         price: lines[3].to_i,
         balance: lines[4].to_i
     )
+  end
+
+  def initialize(options)
+    super
+    @director = options[:director]
+    @year = options[:year]
+  end
+
+  def output
+    "Фильм #{@title}, #{@year}, реж. #{@director}, #{super}"
   end
 
   def update(options)

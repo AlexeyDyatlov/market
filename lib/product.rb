@@ -7,10 +7,11 @@ class Product
   end
 
   def output
-    "#{@price} руб. осталось #{@balance} шт."
+    "#{@price} руб. (осталось #{@balance} шт.)"
   end
 
   def update(options)
+    @title = options[:title] if options[:title]
     @price = options[:price] if options[:price]
     @balance = options[:balance] if options[:balance]
   end

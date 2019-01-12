@@ -2,7 +2,8 @@ class ProductCollection
 
   PRODUCT_TYPES = {
       movie: {dir: 'films', class: Movie},
-      book: {dir: 'books', class: Book}
+      book: {dir: 'books', class: Book},
+      disk: {dir: 'discs', class: Disk}
   }
 
   def initialize(products = [])
@@ -23,7 +24,7 @@ class ProductCollection
     self.new(products)
   end
 
-  def to_a
+  def to_console
     @products
   end
 

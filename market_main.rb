@@ -7,16 +7,18 @@ if Gem.win_platform?
   end
 end
 
-require_relative 'lib/product.rb'
-require_relative 'lib/book.rb'
-require_relative 'lib/movie.rb'
-require_relative 'lib/product_collection.rb'
+require_relative 'lib/product'
+require_relative 'lib/book'
+require_relative 'lib/movie'
+require_relative 'lib/disk'
+require_relative 'lib/product_collection'
 
 current_path = __dir__
 
 collection = ProductCollection.from_dir(current_path + '/data')
 collection.sort!(by: :title, order: :asc)
-
-collection.to_a.each do |item|
-  puts item
+items = []
+collection.to_console.each_with_index do |item, index|
+  items << "#{index + 1}.#{item.output}"
 end
+puts items
