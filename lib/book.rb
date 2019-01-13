@@ -7,7 +7,6 @@ class Book < Product
     @author = options[:author]
   end
 
-
   def self.from_file(file_path)
     lines = File.readlines(file_path, encoding: 'UTF-8').map { |l| l.chomp }
     self.new(

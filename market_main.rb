@@ -12,13 +12,29 @@ require_relative 'lib/book'
 require_relative 'lib/movie'
 require_relative 'lib/disk'
 require_relative 'lib/product_collection'
+require_relative 'lib/purchase'
 
 current_path = __dir__
 
 collection = ProductCollection.from_dir(current_path + '/data')
 collection.sort!(by: :title, order: :asc)
+
 items = []
+
 collection.to_console.each_with_index do |item, index|
-  items << "#{index + 1}.#{item.output}"
+  items << item
 end
-puts items
+
+user_purchase = Purchase.new(items)
+user_purchase.add_to_cart
+user_purchase.user_cart
+
+
+
+
+
+
+
+
+
+
