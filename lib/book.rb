@@ -18,7 +18,7 @@ class Book < Product
     )
   end
 
-  def output
+  def to_s
     "Книга «#{@title}», #{@genre}, автор — #{@author}, #{super}"
   end
 

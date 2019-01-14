@@ -21,20 +21,32 @@ collection.sort!(by: :title, order: :asc)
 
 items = []
 
-collection.to_console.each_with_index do |item, index|
+collection.to_a.each do |item|
   items << item
 end
 
 user_purchase = Purchase.new(items)
-user_purchase.add_to_cart
-user_purchase.user_cart
+user_input = nil
 
+until user_input == 0
+  puts "\nЧто хотите купить?\n\n"
+  user_purchase.products_to_s
+  puts "0. Выход"
+  user_input = STDIN.gets.to_i
+  user_purchase.add_to_cart(user_input)
+  break if user_input == 0
 
+  unless user_purchase.cart_empty?
+    puts "Ваша корзина: "
+  end
 
+  user_purchase.user_cart_to_s
+end
 
-
-
-
-
-
-
+unless user_purchase.cart_empty?
+  puts "\nВы выбрали: "
+  user_purchase.user_cart_to_s
+  puts "\nТоваров на сумму: #{user_purchase.sum} руб. Спасибо за покупку!"
+else
+  puts "\nВы ничего не купили. Больше не приходите!"
+end

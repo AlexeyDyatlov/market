@@ -21,10 +21,10 @@ class ProductCollection
         products << product_class.from_file(path)
       end
     end
-    self.new(products)
+    new(products)
   end
 
-  def to_console
+  def to_a
     @products
   end
 

@@ -18,7 +18,7 @@ class Movie < Product
     @year = options[:year]
   end
 
-  def output
+  def to_s
     "Фильм #{@title}, #{@year}, реж. #{@director}, #{super}"
   end
 

@@ -1,13 +1,13 @@
 class Product
-  attr_accessor :title, :price, :balance, :quantity
+  attr_accessor :title, :price, :balance
   def initialize(options)
     @title = options[:title]
     @price = options[:price]
     @balance = options[:balance]
-    @quantity = 0
+
   end
 
-  def output
+  def to_s
     "#{@price} руб. (осталось #{@balance} шт.)"
   end
 

@@ -20,7 +20,7 @@ class Disk < Product
     )
   end
 
-  def output
+  def to_s
     "Альбом #{@artist} — \'#{@title}', #{@genre}, #{@year}, #{super}"
   end
 
